@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Test Menu</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"> Test Library</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="booksmenu">Test Menu</a></li>
+      <!--li><a href="newTest">New Test</a></li>
+      <li><a href="oldTest">Old Test</a></li>
+      <li><a href="listofTest">List Of Test</a></li-->
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <form method="POST" class="post-form" action="/saveform" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table table-bordered">
+      <thead class="dropdown">
+        <tr>
+          <th scope="col"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">eid</button></th>
+          <th scope="col"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">ename</button></th>
+          <th scope="col"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">econtact</button></th>
+          <!--th scope="col"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">publication</button></th>
+          <th scope="col"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Edit Details</button></th-->
+        </tr>
+      </thead>
+      {% for form in form_list %}
+      <tbody>
+        <tr>
+          <td>{{form.eid }}</td>
+          <td>{{form.ename}}</td>
+          <td>{{form.econtact}}</td>
+          <!--td> <a href="edit/{{form.id}}"> Edit</a></td-->
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+  </form>
+</div>
+
+</body>
+</html>
