@@ -21,39 +21,21 @@ def emp(request):
     else:
         form = EmployeeForm()
     return render(request,'index.html',{'form':form})
-"""def emp(request):
-    if request.method == "POST":
 
-    else:
-        info = Employee.objects.all()
-        #bookdata = {"details": info}
-        #form = EmployeeForm()
-        info.save()
-    return render(request,{"book_list":res})"""
-'''def employeesmenu(request):
+def employeesmenu(request):
     books = Employee()
     books.save()
     res  = Employee.objects.all()
-    return render(request, "dataView.html", {"book_list":res})'''
+    return render(request, "dataView.html", {"book_list":res})
 def saveform(request):
-    form=Employee()
-    form.save()
-    info=Employee.objects.all()
-    return render(request, "dataView.html",{"form_list":info})
-
     if request.method == 'POST':
-        if request.POST["id"] =="":
-            form=Employee(eid=request.POST['eid'], ename=request.POST['ename'],econtact=request.POST['econtact'])
-            form.save()
-        elif request.POST["id"]!="":
-            formdb=getEmployee(int(request.POST["id"]))
-            formdb.econtact=request.POST["econtact"]
-            formdb.ename=request.POST["ename"]
-            formdb.eid=request.POST["eid"]
-            formdb.save()
+        form = Employee()
+        form=Employee(eid=request.POST['eid'], ename=request.POST['ename'],econtact=request.POST['econtact'])
+        form.save()
+        info=Employee.objects.all()
     else:
         print("save again:")
-    return emp(request)
+    return render(request, "index.html",{"form_list":info})
 def editdetails(request,econtact):
     return render(request,"index.html", {"book":getEmployee(econtact)})
 def getEmployee(id):

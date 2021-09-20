@@ -10,5 +10,25 @@
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
 </form>
+<table class="table table-bordered">
+      <thead class="dropdown">
+        <tr>
+          <th scope="col"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">eid</button></th>
+          <th scope="col"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">ename</button></th>
+          <th scope="col"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">econtact</button></th>
+          <!--th scope="col"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">publication</button></th>
+          <th scope="col"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Edit Details</button></th-->
+        </tr>
+      </thead>
+    {% for form in form_list %}
+      <tbody>
+        <tr>
+          <td>{{form.eid }}</td>
+          <td>{{form.ename}}</td>
+          <td>{{form.econtact}}</td>
+          <!--td> <a href="edit/{{form.id}}"> Edit</a></td-->
+        </tr>
+      </tbody>
+      {% endfor %}
 </body>
 </html>
